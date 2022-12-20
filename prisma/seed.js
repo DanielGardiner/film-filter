@@ -52,11 +52,6 @@ async function main() {
       title: movie.title,
       voteAverage: movie.vote_average,
       voteCount: movie.vote_count,
-      // category: { connect: { id: categoryId } },
-      // genres: {
-      //   connect: [{ id: 12 }],
-      //   // connect: movie.genre_ids?.map((genreId) => ({id: genreId})) || [],
-      // },
     })),
   });
   await prisma.movieGenres.createMany({

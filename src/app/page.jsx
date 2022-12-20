@@ -7,10 +7,8 @@ async function HomePage() {
 
   return (
     <>
-      <div className="mt-5">
-        <Suspense fallback={<p>Loading...</p>}>
-          <SelectGenre genres={genres}/>
-        </Suspense>
+      <div>
+        Home Page...
       </div>
     </>
   );

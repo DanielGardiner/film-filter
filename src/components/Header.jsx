@@ -1,5 +1,6 @@
 'use client';
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 function Header() {
@@ -9,10 +10,9 @@ function Header() {
       <div className="max-w-5xl mx-auto flex justify-between py-4">
         <button onClick={() => router.push('/')}>Icon</button>
         <ul className="flex gap-4">
-          <li>Item 1</li>
+          <li><Link href="/movie/add">Add Movie</Link></li>
           <li>Item 2</li>
           <li>Item 3</li>
-          <li>Item 4</li>
         </ul>
       </div>
     </header>
