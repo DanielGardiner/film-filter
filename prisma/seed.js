@@ -1,6 +1,6 @@
-const { PrismaClient } = require("@prisma/client");
-const fetchAllGenres = require("./fetchAllGenres");
-const fetchTopRatedMovies = require("./fetchTopRatedMovies");
+import { PrismaClient } from "@prisma/client";
+import fetchAllGenres from "../src/services/movie/fetchAllGenres.js";
+import fetchTopRatedMovies from "../src/services/movie/fetchTopRatedMovies.js";
 
 const prisma = new PrismaClient();
 
@@ -18,9 +18,9 @@ const getMovieGenres = (movie) => {
       });
     });
   });
-    
+
   return output;
-}
+};
 
 async function main() {
   // Clear existing data
@@ -36,6 +36,8 @@ async function main() {
   await prisma.genre.createMany({
     data: genres,
   });
+
+
   await prisma.movie.createMany({
     data: movies.map((movie) => ({
       id: movie.id,
@@ -50,14 +52,16 @@ async function main() {
       title: movie.title,
       voteAverage: movie.vote_average,
       voteCount: movie.vote_count,
-      genres: {
-        create: movie.genre_ids
-      }
+      // category: { connect: { id: categoryId } },
+      // genres: {
+      //   connect: [{ id: 12 }],
+      //   // connect: movie.genre_ids?.map((genreId) => ({id: genreId})) || [],
+      // },
     })),
   });
-  // await prisma.movieGenres.createMany({
-  //   data: getMovieGenres(movies),
-  // });
+  await prisma.movieGenres.createMany({
+    data: getMovieGenres(movies),
+  });
 }
 main()
   .then(async () => {

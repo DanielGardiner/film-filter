@@ -21,6 +21,8 @@ model Movie {
   title String
   voteAverage Float
   voteCount Int
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
 }
 
 
@@ -28,6 +30,8 @@ model Genre {
   id Int @id @default(autoincrement())
   name String
   movies MovieGenres[]
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
 }
 
 model MovieGenres {
@@ -35,6 +39,10 @@ model MovieGenres {
   movieId Int
   genre Genre @relation(fields: [genreId], references: [id])
   genreId Int
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
 
   @@id([movieId, genreId])
+  @@index([genreId])
+  @@index([movieId])
 }
