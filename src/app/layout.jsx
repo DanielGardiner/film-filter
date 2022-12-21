@@ -2,9 +2,12 @@ import "../styles/globals.css";
 import Header from '../components/Header';
 import SelectGenre from '../components/SelectGenre';
 import prisma from "../database";
+// import { useRouter } from "next/navigation";
 
 export default async function RootLayout({ children }) {
   const genres = await prisma.genre.findMany();
+
+
 
   return (
     <html lang="en">

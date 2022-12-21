@@ -11,8 +11,7 @@ function Header() {
         <button onClick={() => router.push('/')}>Icon</button>
         <ul className="flex gap-4">
           <li><Link href="/movie/add">Add Movie</Link></li>
-          <li>Item 2</li>
-          <li>Item 3</li>
+          <li><Link href="/genre/add">Add Genre</Link></li>
         </ul>
       </div>
     </header>
