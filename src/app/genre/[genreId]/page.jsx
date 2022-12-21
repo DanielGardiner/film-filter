@@ -20,9 +20,6 @@ async function Genre({ params }) {
     },
   });
 
-  console.log('%c [qq]: movies ', 'background: #fbff00; color: #000000; font-size: 1rem; padding: 0.2rem 0; margin: 0.5rem;', '\n', movies, '\n\n');
-
-
   // Add artificial delay to simulate network latency
   await new Promise((resolve) => setTimeout(resolve, 700));
 
